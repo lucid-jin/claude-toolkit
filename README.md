@@ -1,161 +1,164 @@
 # Claude Toolkit
 
-개인 Claude 플러그인 모음입니다. Claude Code와 Claude.ai에서 사용할 수 있는 다양한 스킬을 포함하고 있습니다.
+A collection of personal Claude plugins and skills for Claude Code and Claude.ai.
 
-## 📦 포함된 스킬
+**[English](README.md) | [한국어](README.ko.md)**
+
+## 📦 Included Skills
 
 ### 1. Obsidian (`/obsidian`)
-옵시디언(Obsidian) 노트 관리 자동화 스킬
+Obsidian note management and automation skill
 
-#### 기능
-- **READ**: 노트 검색, 태그 찾기, 백링크 탐색
-- **WRITE**: 노트 작성, 구조화, 정리
-- **ORGANIZE**: 인박스 정리, 폴더 분류, 지식 관리
+#### Features
+- **READ**: Search notes, find tags, explore backlinks
+- **WRITE**: Create notes, structure, organize content
+- **ORGANIZE**: Manage inbox, classify folders, knowledge management
 
-#### 포함된 가이드
-- `SKILL.md` - 스킬 소개 및 핵심 규칙
-- `READ.md` - 노트 읽기/검색 가이드
-- `WRITE.md` - 노트 작성 가이드
-- `ORGANIZE.md` - 인박스 정리 및 분류 가이드
+#### Included Guides
+- `SKILL.md` - Skill introduction and core rules
+- `READ.md` - Guide for reading and searching notes
+- `WRITE.md` - Guide for creating notes
+- `ORGANIZE.md` - Guide for organizing and classifying notes
 
-#### 사용 예시
+#### Usage Examples
 
-설치 후 Claude Code에서:
-
-```
-/obsidian
-
-내 옵시디언 vault에서 "Claude"에 대한 노트를 모두 찾아줘
-```
-
-또는:
+After installation, use in Claude Code:
 
 ```
 /obsidian
 
-2026-01-17에 작성한 draft 노트들을 정리해야 하는데 어디로 분류하면 좋을까?
+Find all notes about "Claude" in my Obsidian vault
 ```
 
-## 🚀 설치 방법
+Or:
 
-### ⭐ 방법 1: 플러그인 마켓플레이스 (추천)
+```
+/obsidian
 
-Claude Code에서 다음 커맨드를 실행합니다:
+I have draft notes from 2026-01-17. Where should I classify them?
+```
+
+## 🚀 Installation
+
+### ⭐ Method 1: Plugin Marketplace (Recommended)
+
+Run this command in Claude Code:
 
 ```bash
 /plugin marketplace add lucid-jin/claude-toolkit
 ```
 
-그 다음 플러그인을 설치합니다:
+Then install the plugin:
 
 ```bash
 /plugin install obsidian@lucid-jin-claude-toolkit
 ```
 
-설치 완료! 이제 아래와 같이 사용할 수 있습니다:
+Done! Now you can use it like this:
 
 ```
 /obsidian
 
-내 옵시디언 vault에서 "Claude"에 대한 노트를 모두 찾아줘
+Find all notes about "Project" in my Obsidian vault
 ```
 
-**장점:**
-- 한 줄의 명령어로 설치 완료
-- 자동 업데이트 지원
-- 여러 플러그인 쉽게 관리
+**Benefits:**
+- One-line installation
+- Automatic updates
+- Easy to manage multiple plugins
 
 ---
 
-### 방법 2: 수동 설치 (클래식)
+### Method 2: Manual Installation (Classic)
 
-1. **레포 클론**
+1. **Clone the repository**
    ```bash
    git clone https://github.com/lucid-jin/claude-toolkit.git
    ```
 
-2. **스킬 폴더를 Claude 디렉토리에 복사**
+2. **Copy skill folder to Claude directory**
    ```bash
    cp -r claude-toolkit/obsidian ~/.claude/skills/obsidian
    ```
 
-3. **Claude Code에서 사용**
+3. **Use in Claude Code**
    ```
    /obsidian
    ```
 
 ---
 
-### ⚙️ Vault 경로 설정 (중요!)
+### ⚙️ Vault Path Configuration (Important!)
 
-설치 후 자신의 Obsidian vault 경로를 설정해야 합니다:
+After installation, configure your Obsidian vault path:
 
 ```bash
-# 설정할 파일들 (아래 경로들 중 하나 또는 모두)
+# Edit these files to set your vault path:
 ~/.claude/skills/obsidian/SKILL.md
 ~/.claude/skills/obsidian/READ.md
 ~/.claude/skills/obsidian/WRITE.md
 ~/.claude/skills/obsidian/ORGANIZE.md
 ```
 
-각 파일에서 다음 경로를 **본인의 vault 경로로 변경**하세요:
+Change the vault path to match your setup:
 
-**기본 경로 (macOS):**
+**Default path (macOS):**
 ```
 ~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
 ```
 
-**다른 경로 사용 중이라면:**
+**If using a different path:**
 ```bash
-# 본인의 vault 경로로 변경
+# Update to your vault path
 ~/Documents/My Vault
 /Volumes/External/Obsidian
 ```
 
 ---
 
-### Claude.ai에서 사용하기
+### Using with Claude.ai
 
-Claude.ai는 로컬 플러그인 시스템을 지원하지 않습니다. 대신:
-- 이 레포의 가이드 파일들(`READ.md`, `WRITE.md`, `ORGANIZE.md`)을 참고하여 사용할 수 있습니다
-- MCP(Model Context Protocol) 서버로 확장하면 더 강력한 통합이 가능합니다
+Claude.ai doesn't support local plugin systems. Instead, you can:
+- Reference the guide files (`READ.md`, `WRITE.md`, `ORGANIZE.md`) from this repository
+- Set up as an MCP (Model Context Protocol) server for more powerful integration
 
-## 📝 프로젝트 구조
+## 📝 Project Structure
 
 ```
 claude-toolkit/
 ├── .claude-plugin/
-│   └── marketplace.json   # 플러그인 마켓플레이스 설정
+│   └── marketplace.json   # Plugin marketplace configuration
 ├── obsidian/
-│   ├── SKILL.md          # 스킬 정의 및 메타데이터
-│   ├── READ.md           # 읽기/검색 가이드
-│   ├── WRITE.md          # 작성 가이드
-│   └── ORGANIZE.md       # 정리 가이드
+│   ├── SKILL.md          # Skill definition and metadata
+│   ├── READ.md           # Reading and search guide
+│   ├── WRITE.md          # Writing guide
+│   └── ORGANIZE.md       # Organization and classification guide
 ├── .gitignore
-└── README.md
+├── README.md             # English version
+└── README.ko.md          # Korean version
 ```
 
-## 🔧 커스터마이징
+## 🔧 Customization
 
-각 스킬은 모듈식으로 설계되어 있어 필요에 따라 수정할 수 있습니다:
+Each skill is modularly designed and can be modified as needed:
 
-1. 스킬 메타데이터 수정 (SKILL.md의 frontmatter)
-2. 경로 업데이트 (vault 위치 등)
-3. 규칙 커스터마이징 (필요시)
+1. Edit skill metadata (frontmatter in SKILL.md)
+2. Update paths (vault location, etc.)
+3. Customize rules as needed
 
-## 📚 더 알아보기
+## 📚 Learn More
 
-- [Obsidian 공식 사이트](https://obsidian.md/)
-- [Claude Code 문서](https://claude.com/claude-code)
+- [Obsidian Official Website](https://obsidian.md/)
+- [Claude Code Documentation](https://claude.com/claude-code)
 
-## 📄 라이선스
+## 📄 License
 
 MIT License
 
-## 🤝 기여
+## 🤝 Contributing
 
-개인 도구이지만 개선 사항이나 버그 리포트는 환영합니다!
+While this is a personal tool, improvements and bug reports are welcome!
 
 ---
 
-**마지막 업데이트**: 2026-01-17
+**Last Updated**: 2026-01-17
