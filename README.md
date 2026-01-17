@@ -6,36 +6,21 @@ A collection of personal Claude plugins and skills for Claude Code and Claude.ai
 
 ## 📦 Included Skills
 
-### 1. Obsidian (`/obsidian`)
-Obsidian note management and automation skill
+### 1. Obsidian Skill
+Obsidian note management and automation - search, create, and organize your notes.
 
-#### Features
-- **READ**: Search notes, find tags, explore backlinks
-- **WRITE**: Create notes, structure, organize content
-- **ORGANIZE**: Manage inbox, classify folders, knowledge management
+**Features:** Search notes, find tags, explore backlinks, create structured notes, manage inbox, classify folders
 
-#### Included Guides
-- `SKILL.md` - Skill introduction and core rules
-- `READ.md` - Guide for reading and searching notes
-- `WRITE.md` - Guide for creating notes
-- `ORGANIZE.md` - Guide for organizing and classifying notes
+📖 **[Obsidian Skill Documentation →](obsidian/README.md)**
 
-#### Usage Examples
+#### Quick Example
 
-After installation, use in Claude Code:
+After installation:
 
 ```
 /obsidian
 
-Find all notes about "Claude" in my Obsidian vault
-```
-
-Or:
-
-```
-/obsidian
-
-I have draft notes from 2026-01-17. Where should I classify them?
+Find all notes about "Project" in my Obsidian vault
 ```
 
 ## 🚀 Installation
@@ -88,31 +73,18 @@ Find all notes about "Project" in my Obsidian vault
 
 ---
 
-### ⚙️ Vault Path Configuration (Important!)
+### ⚙️ Vault Path Configuration
 
-After installation, configure your Obsidian vault path:
+After installation, update your Obsidian vault path in the skill files:
 
 ```bash
-# Edit these files to set your vault path:
-~/.claude/skills/obsidian/SKILL.md
+~/.claude/skills/obsidian/README.md
 ~/.claude/skills/obsidian/READ.md
 ~/.claude/skills/obsidian/WRITE.md
 ~/.claude/skills/obsidian/ORGANIZE.md
 ```
 
-Change the vault path to match your setup:
-
-**Default path (macOS):**
-```
-~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
-```
-
-**If using a different path:**
-```bash
-# Update to your vault path
-~/Documents/My Vault
-/Volumes/External/Obsidian
-```
+Update the default path to match your vault location. See [Obsidian Skill Documentation](obsidian/README.md) for more details.
 
 ---
 
@@ -127,15 +99,15 @@ Claude.ai doesn't support local plugin systems. Instead, you can:
 ```
 claude-toolkit/
 ├── .claude-plugin/
-│   └── marketplace.json   # Plugin marketplace configuration
+│   └── marketplace.json        # Plugin marketplace configuration
 ├── obsidian/
-│   ├── SKILL.md          # Skill definition and metadata
-│   ├── READ.md           # Reading and search guide
-│   ├── WRITE.md          # Writing guide
-│   └── ORGANIZE.md       # Organization and classification guide
+│   ├── README.md              # Obsidian skill documentation
+│   ├── READ.md                # Reading and search guide
+│   ├── WRITE.md               # Writing guide
+│   └── ORGANIZE.md            # Organization guide
 ├── .gitignore
-├── README.md             # English version
-└── README.ko.md          # Korean version
+├── README.md                   # English version (main)
+└── README.ko.md               # Korean version
 ```
 
 ## 🔧 Customization
