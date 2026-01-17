@@ -73,31 +73,34 @@ Must be updated in:
 
 ## MCP Servers Configuration
 
-### One-Time Setup (Global)
+### ⚡ One-Time Setup (Ultra-Simple!)
 ```bash
-# 프로젝트의 mcp 폴더에서 한 번만 실행
+# In project's mcp folder - run ONCE
 ./mcp/setup.sh
 
-# 스크립트가 자동으로:
-# 1. ~/.claude/.env 생성 (전역 환경변수 저장)
-# 2. ~/.zshrc에 source 명령 추가
-# 3. 이후 모든 터미널 세션에서 자동 로드
+# Script automatically:
+# 1. Creates ~/.claude/.env (global - works everywhere!)
+# 2. Adds source command to ~/.zshrc
+# 3. Auto-loads in ALL future terminal sessions
+# 4. Never worry about it again!
 ```
 
-### After Setup
+### After Setup (Forever!)
 ```bash
-# 터미널 재시작
+# One-time reload
 source ~/.zshrc
 
-# 환경변수 확인
-echo $LINEAR_API_KEY
-echo $SENTRY_API_KEY
-
-# Claude Code 시작
+# Then just use it - MCP auto-loads!
 claude
-
-# /mcp 명령으로 MCP 서버 상태 확인
+/mcp              # Check MCP server status
 ```
+
+### Why This is Great:
+- 🎯 One setup, unlimited usage
+- 🌍 Works in ALL projects/folders
+- ⏱️ Saves time forever
+- 🔄 No repetitive configuration
+- 😌 Set and forget
 
 ### Included MCP Servers
 - **Linear** (https://linear.app/settings/api)

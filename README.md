@@ -29,15 +29,29 @@ Personal MCP collection: **Linear**, **Sentry**, and more
 
 🔧 **[MCP Setup Guide →](mcp/README.md)**
 
-**One-Time Setup:**
+### 🚀 Ultra-Simple Setup (One Time!)
+
 ```bash
-cd mcp
-./setup.sh        # Interactive API key setup (one time only)
-source ~/.zshrc   # Reload shell
-claude            # Start Claude Code
+cd mcp && ./setup.sh        # That's it! ✨
 ```
 
-✅ After setup, MCP servers auto-load in all terminal sessions!
+**What the script does automatically:**
+- ✅ Asks for your API keys (with guidance)
+- ✅ Saves them globally to `~/.claude/.env`
+- ✅ Auto-loads in ALL terminal sessions
+- ✅ Never worry about it again!
+
+**Then just:**
+```bash
+source ~/.zshrc
+claude          # MCP servers auto-load! 🎉
+```
+
+💡 **Why this is better:**
+- ⏱️ One-time setup, eternal benefit
+- 🌍 Works everywhere (all projects, all folders)
+- 🔄 No repetitive configuration
+- 😌 Set it once, forget it
 
 ## 🚀 Installation
 
