@@ -25,19 +25,16 @@ Find all notes about "Project" in my Obsidian vault
 
 ## 🔌 Included MCP Servers
 
-Personal MCP collection for development tools integration.
+Personal MCP collection: **Linear**, **Sentry**, and more
 
-**MCP Servers:** Linear, Sentry, and more
+🔧 **[MCP Setup Guide →](mcp/README.md)**
 
-🔧 **[MCP Collection Documentation →](mcp/README.md)**
-
-#### Environment Variables
-
-MCP servers use environment variables for API authentication. Copy `.env.example` to `.env` and add your API keys:
-
+**Quick Start:**
 ```bash
-LINEAR_API_KEY=your_key
-SENTRY_API_KEY=your_key
+cd mcp
+./setup.sh        # Interactive setup
+source .env       # Load environment variables
+claude            # Start Claude Code
 ```
 
 ## 🚀 Installation

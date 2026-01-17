@@ -30,26 +30,48 @@ cp mcp/.env.example .env
 
 ---
 
-## 🔑 환경 변수 설정
+## 🔑 환경 변수 설정 (권장)
 
-### 1. .env 파일 생성
+### 빠른 설정 (Recommended)
 
 ```bash
-cp .env.example .env
+# 1. 대화형 설정 스크립트 실행
+./mcp/setup.sh
+
+# 2. 환경변수 로드
+source .env
+
+# 3. Claude Code 시작
+claude
 ```
 
-### 2. API 키 입력
+### 수동 설정
 
-`.env` 파일을 편집하여 각 서비스의 API 키를 입력하세요:
+또는 직접 설정하려면:
 
+```bash
+# 1. .env 파일 생성
+cp .env.example .env
+
+# 2. .env 파일 편집 (에디터 사용)
+nano .env
+# 또는
+code .env
+```
+
+`.env` 파일에 API 키 입력:
 ```
 LINEAR_API_KEY=lin_pat_xxxxxxxxxxxxx
 SENTRY_API_KEY=sntrys_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-### 3. 자동 로드
+```bash
+# 3. 환경변수 로드
+source .env
 
-Claude Code에서 프로젝트를 열면 자동으로 `.env` 파일의 환경변수를 로드합니다.
+# 4. Claude Code 시작
+claude
+```
 
 ---
 

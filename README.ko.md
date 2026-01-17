@@ -25,19 +25,16 @@
 
 ## 🔌 포함된 MCP 서버
 
-개인적으로 자주 사용하는 MCP 서버 모음입니다.
+개인용 MCP 모음: **Linear**, **Sentry**, 그 외 등
 
-**MCP 서버:** Linear, Sentry, 그 외 등
+🔧 **[MCP 설정 가이드 →](mcp/README.md)**
 
-🔧 **[MCP 컬렉션 문서 →](mcp/README.md)**
-
-#### 환경 변수
-
-MCP 서버는 API 인증을 위해 환경변수를 사용합니다. `.env.example`을 `.env`로 복사하고 API 키를 입력하세요:
-
+**빠른 시작:**
 ```bash
-LINEAR_API_KEY=your_key
-SENTRY_API_KEY=your_key
+cd mcp
+./setup.sh        # 대화형 설정
+source .env       # 환경변수 로드
+claude            # Claude Code 실행
 ```
 
 ## 🚀 설치 방법

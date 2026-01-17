@@ -71,6 +71,25 @@ Must be updated in:
 - **Allowed Tools**: Read, Write, Edit, Glob, Grep, Bash (ls, mkdir, cat, find, mv)
 - **Usage**: `/obsidian` command in Claude Code
 
+## MCP Servers
+
+### Quick Setup
+```bash
+cd mcp
+./setup.sh       # Interactive environment variable setup
+source .env      # Load environment variables
+claude           # Start Claude Code
+```
+
+### Included MCP Servers
+- **Linear** - Project management, issue tracking
+- **Sentry** - Error monitoring, performance analysis
+
+### Setup Script
+- **Location**: `mcp/setup.sh`
+- **Function**: Guides users through entering API keys and creates `.env` file
+- **Usage**: Run before starting Claude Code to configure MCP servers
+
 ## Future Expansion
 
 Skills should be added under `skills/` folder:
