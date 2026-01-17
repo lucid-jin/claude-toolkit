@@ -4,14 +4,60 @@
 
 **Allowed Tools:** Read, Write, Edit, Glob, Grep, Bash(ls:*, mkdir:*, cat:*, find:*, mv:*)
 
-## 🔧 Vault 경로 설정
+## 🔧 Vault 경로 설정 (중요!)
 
-기본 경로:
+### 설정 방법
+
+**Step 1: Vault 경로 확인**
+
+Obsidian에서 현재 vault 경로를 확인하세요:
+- Obsidian 열기
+- 좌측 하단 "vault 이름" 클릭
+- "vault 폴더 열기" → 경로 복사
+
+**Step 2: 스킬 파일 수정**
+
+다음 4개 파일을 편집하여 경로를 변경하세요:
+
+```bash
+nano ~/.claude/skills/obsidian/README.md
+nano ~/.claude/skills/obsidian/READ.md
+nano ~/.claude/skills/obsidian/WRITE.md
+nano ~/.claude/skills/obsidian/ORGANIZE.md
 ```
+
+**Step 3: 경로 변경**
+
+각 파일에서 기본 경로를 찾아 수정:
+
+```
+❌ Before:
 ~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
+
+✅ After (your vault path):
+/Users/username/Documents/My Vault
+또는
+~/Obsidian/MainVault
 ```
 
-다른 경로를 사용 중이라면 아래 가이드 파일들에서 경로를 수정하세요.
+### 기본 경로들
+
+| OS | 기본 경로 |
+|---|---|
+| **macOS** | `~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault` |
+| **Linux** | `~/.var/app/md.obsidian.Obsidian/data/Obsidian Vault` |
+| **Windows** | `C:\Users\YourName\Documents\Obsidian Vault` |
+
+### 설정 확인
+
+설정 후 Claude Code에서:
+```
+/obsidian
+
+내 vault에서 노트를 찾아줘
+```
+
+정상 작동하면 완료! ✅
 
 ## 📚 가이드
 

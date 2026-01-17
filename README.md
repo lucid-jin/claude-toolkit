@@ -4,162 +4,102 @@ A collection of personal Claude plugins and skills for Claude Code and Claude.ai
 
 **[English](README.md) | [한국어](README.ko.md)**
 
-## 📦 Included Skills
+---
 
-### 1. Obsidian Skill
+## 📦 Skills & Tools
+
+### 🎯 Obsidian Skill
 Obsidian note management and automation - search, create, and organize your notes.
 
-**Features:** Search notes, find tags, explore backlinks, create structured notes, manage inbox, classify folders
+📖 **[Full Setup & Guide →](skills/obsidian/README.md)**
 
-📖 **[Obsidian Skill Documentation →](skills/obsidian/README.md)**
-
-#### Quick Example
-
-After installation:
-
+**Quick start:**
 ```
 /obsidian
-
 Find all notes about "Project" in my Obsidian vault
 ```
 
-## 🔌 Included MCP Servers
+---
 
+### 🔌 MCP Servers Collection
 Personal MCP collection: **Linear**, **Sentry**, and more
 
-🔧 **[MCP Setup Guide →](mcp/README.md)**
+🔧 **[Quick Setup Guide →](mcp/README.md)**
 
-### 🚀 Ultra-Simple Setup (One Time!)
-
+**Ultra-simple one-time setup:**
 ```bash
-cd mcp && ./setup.sh        # That's it! ✨
+cd mcp && ./setup.sh    # Done! ✨
 ```
 
-**What the script does automatically:**
-- ✅ Asks for your API keys (with guidance)
-- ✅ Saves them globally to `~/.claude/.env`
-- ✅ Auto-loads in ALL terminal sessions
-- ✅ Never worry about it again!
-
-**Then just:**
-```bash
-source ~/.zshrc
-claude          # MCP servers auto-load! 🎉
-```
-
-💡 **Why this is better:**
-- ⏱️ One-time setup, eternal benefit
-- 🌍 Works everywhere (all projects, all folders)
-- 🔄 No repetitive configuration
-- 😌 Set it once, forget it
+---
 
 ## 🚀 Installation
 
 ### ⭐ Method 1: Plugin Marketplace (Recommended)
 
-Run this command in Claude Code:
-
 ```bash
 /plugin marketplace add lucid-jin/claude-toolkit
-```
-
-Then install the plugin:
-
-```bash
 /plugin install obsidian@lucid-jin-claude-toolkit
 ```
 
-Done! Now you can use it like this:
-
-```
+Then use:
+```bash
 /obsidian
-
-Find all notes about "Project" in my Obsidian vault
 ```
 
-**Benefits:**
-- One-line installation
-- Automatic updates
-- Easy to manage multiple plugins
-
----
-
-### Method 2: Manual Installation (Classic)
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/lucid-jin/claude-toolkit.git
-   ```
-
-2. **Copy skill folder to Claude directory**
-   ```bash
-   cp -r claude-toolkit/obsidian ~/.claude/skills/obsidian
-   ```
-
-3. **Use in Claude Code**
-   ```
-   /obsidian
-   ```
-
----
-
-### ⚙️ Vault Path Configuration
-
-After installation, update your Obsidian vault path in the skill files:
+### Method 2: Manual Installation
 
 ```bash
-~/.claude/skills/obsidian/README.md
-~/.claude/skills/obsidian/READ.md
-~/.claude/skills/obsidian/WRITE.md
-~/.claude/skills/obsidian/ORGANIZE.md
+git clone https://github.com/lucid-jin/claude-toolkit.git
+cp -r claude-toolkit/skills/obsidian ~/.claude/skills/obsidian
 ```
 
-Update the default path to match your vault location. See [Obsidian Skill Documentation](skills/obsidian/README.md) for more details.
+---
 
-## 📝 Project Structure
+## 📋 What to Do First?
+
+1. **Obsidian Skill?** → [📖 Obsidian Setup](skills/obsidian/README.md)
+2. **MCP Servers?** → [🔧 MCP Setup](mcp/README.md)
+3. **How to use?** → See individual guides above
+
+---
+
+## 📁 Project Structure
 
 ```
 claude-toolkit/
 ├── .claude/
-│   └── memory.md                    # Project context for Claude Code
+│   └── memory.md                    # Project context
 ├── .claude-plugin/
-│   └── marketplace.json             # Plugin marketplace configuration
+│   └── marketplace.json             # Plugin config
 ├── skills/
 │   └── obsidian/
-│       ├── README.md                # Obsidian skill documentation
-│       ├── READ.md                  # Reading and search guide
+│       ├── README.md                # Setup & vault path
+│       ├── READ.md                  # Search guide
 │       ├── WRITE.md                 # Writing guide
 │       └── ORGANIZE.md              # Organization guide
 ├── mcp/
-│   ├── .mcp.json                    # MCP servers configuration
-│   ├── .env.example                 # Environment variables template
-│   └── README.md                    # MCP setup guide
-├── .gitignore
-├── README.md                         # English version (main)
-└── README.ko.md                     # Korean version
+│   ├── .mcp.json                    # MCP server config
+│   ├── setup.sh                     # Interactive setup
+│   └── README.md                    # MCP guide
+└── README.md                        # This file
 ```
 
-## 🔧 Customization
-
-Each skill is modularly designed and can be modified as needed:
-
-1. Edit skill metadata (frontmatter in SKILL.md)
-2. Update paths (vault location, etc.)
-3. Customize rules as needed
+---
 
 ## 📚 Learn More
 
-- [Obsidian Official Website](https://obsidian.md/)
-- [Claude Code Documentation](https://claude.com/claude-code)
+- [Obsidian Official](https://obsidian.md/)
+- [Claude Code Docs](https://claude.com/claude-code)
+- [Linear](https://linear.app/)
+- [Sentry](https://sentry.io/)
+
+---
 
 ## 📄 License
 
 MIT License
 
-## 🤝 Contributing
-
-While this is a personal tool, improvements and bug reports are welcome!
-
 ---
 
-**Last Updated**: 2026-01-17
+**Need help?** Check the individual guides for each skill or MCP server.

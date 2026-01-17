@@ -120,6 +120,15 @@ nano ~/.claude/.env
 - **Environment File**: `~/.claude/.env` - Global MCP environment variables (auto-created)
 - **Config**: `mcp/.mcp.json` - MCP server definitions
 
+## Directory Navigation
+
+**Users shouldn't need to manually edit many files:**
+- ✅ Obsidian vault path setup → All in `skills/obsidian/README.md`
+- ✅ MCP API keys setup → All in `mcp/README.md` (via setup.sh)
+- ✅ Installation guides → In each respective folder
+
+**Main README only serves as index** - keeps it clean!
+
 ## Future Expansion
 
 Skills should be added under `skills/` folder:
@@ -131,9 +140,11 @@ skills/
 ```
 
 Each skill should follow same structure:
-- `README.md` - Main documentation
+- `README.md` - Setup & usage
 - Additional guides as needed
 - Listed in `.claude-plugin/marketplace.json`
+
+MCP servers should be added to `mcp/.mcp.json`
 
 ## Repository
 - **GitHub**: https://github.com/lucid-jin/claude-toolkit
