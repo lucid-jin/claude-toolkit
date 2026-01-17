@@ -38,54 +38,100 @@
 
 ## 🚀 설치 방법
 
-### Claude Code에서 사용하기
+### ⭐ 방법 1: 플러그인 마켓플레이스 (추천)
 
-1. **레포 클론 또는 다운로드**
+Claude Code에서 다음 커맨드를 실행합니다:
+
+```bash
+/plugin marketplace add lucid-jin/claude-toolkit
+```
+
+그 다음 플러그인을 설치합니다:
+
+```bash
+/plugin install obsidian@lucid-jin-claude-toolkit
+```
+
+설치 완료! 이제 아래와 같이 사용할 수 있습니다:
+
+```
+/obsidian
+
+내 옵시디언 vault에서 "Claude"에 대한 노트를 모두 찾아줘
+```
+
+**장점:**
+- 한 줄의 명령어로 설치 완료
+- 자동 업데이트 지원
+- 여러 플러그인 쉽게 관리
+
+---
+
+### 방법 2: 수동 설치 (클래식)
+
+1. **레포 클론**
    ```bash
    git clone https://github.com/lucid-jin/claude-toolkit.git
    ```
 
-2. **스킬 폴더를 Claude 스킬 디렉토리에 복사**
+2. **스킬 폴더를 Claude 디렉토리에 복사**
    ```bash
    cp -r claude-toolkit/obsidian ~/.claude/skills/obsidian
    ```
 
-3. **Claude Code에서 스킬 사용**
+3. **Claude Code에서 사용**
    ```
    /obsidian
    ```
-   위 명령으로 스킬을 호출할 수 있습니다.
 
-### 경로 설정 (중요!)
+---
 
-스킬의 가이드 파일에 있는 vault 경로를 자신의 환경에 맞게 수정하세요:
+### ⚙️ Vault 경로 설정 (중요!)
+
+설치 후 자신의 Obsidian vault 경로를 설정해야 합니다:
 
 ```bash
-# obsidian 스킬 가이드 파일들을 열어서 다음 경로를 확인/수정
+# 설정할 파일들 (아래 경로들 중 하나 또는 모두)
 ~/.claude/skills/obsidian/SKILL.md
 ~/.claude/skills/obsidian/READ.md
 ~/.claude/skills/obsidian/WRITE.md
 ~/.claude/skills/obsidian/ORGANIZE.md
-
-# 기본 경로: ~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
-# 본인 경로로 변경해야 정상 작동합니다
 ```
+
+각 파일에서 다음 경로를 **본인의 vault 경로로 변경**하세요:
+
+**기본 경로 (macOS):**
+```
+~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
+```
+
+**다른 경로 사용 중이라면:**
+```bash
+# 본인의 vault 경로로 변경
+~/Documents/My Vault
+/Volumes/External/Obsidian
+```
+
+---
 
 ### Claude.ai에서 사용하기
 
-Claude.ai는 로컬 스킬 시스템을 지원하지 않습니다. 대신:
-- 이 레포의 스킬 가이드 파일들을 참고하여 수동으로 지시사항을 작성하여 사용할 수 있습니다.
-- 또는 MCP(Model Context Protocol) 서버로 설정할 수 있습니다.
+Claude.ai는 로컬 플러그인 시스템을 지원하지 않습니다. 대신:
+- 이 레포의 가이드 파일들(`READ.md`, `WRITE.md`, `ORGANIZE.md`)을 참고하여 사용할 수 있습니다
+- MCP(Model Context Protocol) 서버로 확장하면 더 강력한 통합이 가능합니다
 
-## 📝 스킬 구조
+## 📝 프로젝트 구조
 
 ```
 claude-toolkit/
+├── .claude-plugin/
+│   └── marketplace.json   # 플러그인 마켓플레이스 설정
 ├── obsidian/
 │   ├── SKILL.md          # 스킬 정의 및 메타데이터
 │   ├── READ.md           # 읽기/검색 가이드
 │   ├── WRITE.md          # 작성 가이드
 │   └── ORGANIZE.md       # 정리 가이드
+├── .gitignore
 └── README.md
 ```
 

@@ -1,0 +1,13 @@
+{
+  "name": "claude-toolkit",
+  "owner": {
+    "name": "lucid-jin"
+  },
+  "plugins": [
+    {
+      "name": "obsidian",
+      "source": "./obsidian",
+      "description": "Obsidian vault 노트 관리 자동화 - 검색, 작성, 정리"
+    }
+  ]
+}
