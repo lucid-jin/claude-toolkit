@@ -11,7 +11,7 @@ Obsidian note management and automation - search, create, and organize your note
 
 **Features:** Search notes, find tags, explore backlinks, create structured notes, manage inbox, classify folders
 
-📖 **[Obsidian Skill Documentation →](obsidian/README.md)**
+📖 **[Obsidian Skill Documentation →](skills/obsidian/README.md)**
 
 #### Quick Example
 
@@ -84,30 +84,23 @@ After installation, update your Obsidian vault path in the skill files:
 ~/.claude/skills/obsidian/ORGANIZE.md
 ```
 
-Update the default path to match your vault location. See [Obsidian Skill Documentation](obsidian/README.md) for more details.
-
----
-
-### Using with Claude.ai
-
-Claude.ai doesn't support local plugin systems. Instead, you can:
-- Reference the guide files (`READ.md`, `WRITE.md`, `ORGANIZE.md`) from this repository
-- Set up as an MCP (Model Context Protocol) server for more powerful integration
+Update the default path to match your vault location. See [Obsidian Skill Documentation](skills/obsidian/README.md) for more details.
 
 ## 📝 Project Structure
 
 ```
 claude-toolkit/
 ├── .claude-plugin/
-│   └── marketplace.json        # Plugin marketplace configuration
-├── obsidian/
-│   ├── README.md              # Obsidian skill documentation
-│   ├── READ.md                # Reading and search guide
-│   ├── WRITE.md               # Writing guide
-│   └── ORGANIZE.md            # Organization guide
+│   └── marketplace.json             # Plugin marketplace configuration
+├── skills/
+│   └── obsidian/
+│       ├── README.md                # Obsidian skill documentation
+│       ├── READ.md                  # Reading and search guide
+│       ├── WRITE.md                 # Writing guide
+│       └── ORGANIZE.md              # Organization guide
 ├── .gitignore
-├── README.md                   # English version (main)
-└── README.ko.md               # Korean version
+├── README.md                         # English version (main)
+└── README.ko.md                     # Korean version
 ```
 
 ## 🔧 Customization

@@ -11,7 +11,7 @@
 
 **기능:** 노트 검색, 태그 찾기, 백링크 탐색, 구조화된 노트 작성, 인박스 관리, 폴더 분류
 
-📖 **[Obsidian 스킬 문서 →](obsidian/README.md)**
+📖 **[Obsidian 스킬 문서 →](skills/obsidian/README.md)**
 
 #### 빠른 예시
 
@@ -84,30 +84,23 @@ Claude Code에서 다음 커맨드를 실행합니다:
 ~/.claude/skills/obsidian/ORGANIZE.md
 ```
 
-기본 경로를 자신의 vault 위치에 맞게 수정하세요. 자세한 내용은 [Obsidian 스킬 문서](obsidian/README.md)를 참고하세요.
-
----
-
-### Claude.ai에서 사용하기
-
-Claude.ai는 로컬 플러그인 시스템을 지원하지 않습니다. 대신:
-- 이 레포의 가이드 파일들(`READ.md`, `WRITE.md`, `ORGANIZE.md`)을 참고하여 사용할 수 있습니다
-- MCP(Model Context Protocol) 서버로 확장하면 더 강력한 통합이 가능합니다
+기본 경로를 자신의 vault 위치에 맞게 수정하세요. 자세한 내용은 [Obsidian 스킬 문서](skills/obsidian/README.md)를 참고하세요.
 
 ## 📝 프로젝트 구조
 
 ```
 claude-toolkit/
 ├── .claude-plugin/
-│   └── marketplace.json        # 플러그인 마켓플레이스 설정
-├── obsidian/
-│   ├── README.md              # Obsidian 스킬 문서
-│   ├── READ.md                # 읽기/검색 가이드
-│   ├── WRITE.md               # 작성 가이드
-│   └── ORGANIZE.md            # 정리 및 분류 가이드
+│   └── marketplace.json             # 플러그인 마켓플레이스 설정
+├── skills/
+│   └── obsidian/
+│       ├── README.md                # Obsidian 스킬 문서
+│       ├── READ.md                  # 읽기/검색 가이드
+│       ├── WRITE.md                 # 작성 가이드
+│       └── ORGANIZE.md              # 정리 및 분류 가이드
 ├── .gitignore
-├── README.md                   # English version (메인)
-└── README.ko.md               # 한국어 버전
+├── README.md                         # English version (메인)
+└── README.ko.md                     # 한국어 버전
 ```
 
 ## 🔧 커스터마이징
