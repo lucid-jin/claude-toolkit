@@ -23,6 +23,23 @@ After installation:
 Find all notes about "Project" in my Obsidian vault
 ```
 
+## 🔌 Included MCP Servers
+
+Personal MCP collection for development tools integration.
+
+**MCP Servers:** Linear, Sentry, and more
+
+🔧 **[MCP Collection Documentation →](mcp/README.md)**
+
+#### Environment Variables
+
+MCP servers use environment variables for API authentication. Copy `.env.example` to `.env` and add your API keys:
+
+```bash
+LINEAR_API_KEY=your_key
+SENTRY_API_KEY=your_key
+```
+
 ## 🚀 Installation
 
 ### ⭐ Method 1: Plugin Marketplace (Recommended)
@@ -90,6 +107,8 @@ Update the default path to match your vault location. See [Obsidian Skill Docume
 
 ```
 claude-toolkit/
+├── .claude/
+│   └── memory.md                    # Project context for Claude Code
 ├── .claude-plugin/
 │   └── marketplace.json             # Plugin marketplace configuration
 ├── skills/
@@ -98,6 +117,10 @@ claude-toolkit/
 │       ├── READ.md                  # Reading and search guide
 │       ├── WRITE.md                 # Writing guide
 │       └── ORGANIZE.md              # Organization guide
+├── mcp/
+│   ├── .mcp.json                    # MCP servers configuration
+│   ├── .env.example                 # Environment variables template
+│   └── README.md                    # MCP setup guide
 ├── .gitignore
 ├── README.md                         # English version (main)
 └── README.ko.md                     # Korean version

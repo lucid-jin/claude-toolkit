@@ -23,6 +23,23 @@
 내 옵시디언 vault에서 "Project"를 포함한 모든 노트를 찾아줘
 ```
 
+## 🔌 포함된 MCP 서버
+
+개인적으로 자주 사용하는 MCP 서버 모음입니다.
+
+**MCP 서버:** Linear, Sentry, 그 외 등
+
+🔧 **[MCP 컬렉션 문서 →](mcp/README.md)**
+
+#### 환경 변수
+
+MCP 서버는 API 인증을 위해 환경변수를 사용합니다. `.env.example`을 `.env`로 복사하고 API 키를 입력하세요:
+
+```bash
+LINEAR_API_KEY=your_key
+SENTRY_API_KEY=your_key
+```
+
 ## 🚀 설치 방법
 
 ### ⭐ 방법 1: 플러그인 마켓플레이스 (추천)
@@ -90,6 +107,8 @@ Claude Code에서 다음 커맨드를 실행합니다:
 
 ```
 claude-toolkit/
+├── .claude/
+│   └── memory.md                    # Claude Code 프로젝트 컨텍스트
 ├── .claude-plugin/
 │   └── marketplace.json             # 플러그인 마켓플레이스 설정
 ├── skills/
@@ -98,6 +117,10 @@ claude-toolkit/
 │       ├── READ.md                  # 읽기/검색 가이드
 │       ├── WRITE.md                 # 작성 가이드
 │       └── ORGANIZE.md              # 정리 및 분류 가이드
+├── mcp/
+│   ├── .mcp.json                    # MCP 서버 설정
+│   ├── .env.example                 # 환경변수 템플릿
+│   └── README.md                    # MCP 설치 가이드
 ├── .gitignore
 ├── README.md                         # English version (메인)
 └── README.ko.md                     # 한국어 버전
