@@ -29,13 +29,15 @@
 
 🔧 **[MCP 설정 가이드 →](mcp/README.md)**
 
-**빠른 시작:**
+**한 번만 설정:**
 ```bash
 cd mcp
-./setup.sh        # 대화형 설정
-source .env       # 환경변수 로드
-claude            # Claude Code 실행
+./setup.sh        # 대화형 API 키 설정 (한 번만 실행)
+source ~/.zshrc   # 셸 재로드
+claude            # Claude Code 시작
 ```
+
+✅ 설정 후, MCP 서버가 모든 터미널 세션에서 자동 로드됩니다!
 
 ## 🚀 설치 방법
 

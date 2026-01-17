@@ -71,24 +71,51 @@ Must be updated in:
 - **Allowed Tools**: Read, Write, Edit, Glob, Grep, Bash (ls, mkdir, cat, find, mv)
 - **Usage**: `/obsidian` command in Claude Code
 
-## MCP Servers
+## MCP Servers Configuration
 
-### Quick Setup
+### One-Time Setup (Global)
 ```bash
-cd mcp
-./setup.sh       # Interactive environment variable setup
-source .env      # Load environment variables
-claude           # Start Claude Code
+# 프로젝트의 mcp 폴더에서 한 번만 실행
+./mcp/setup.sh
+
+# 스크립트가 자동으로:
+# 1. ~/.claude/.env 생성 (전역 환경변수 저장)
+# 2. ~/.zshrc에 source 명령 추가
+# 3. 이후 모든 터미널 세션에서 자동 로드
+```
+
+### After Setup
+```bash
+# 터미널 재시작
+source ~/.zshrc
+
+# 환경변수 확인
+echo $LINEAR_API_KEY
+echo $SENTRY_API_KEY
+
+# Claude Code 시작
+claude
+
+# /mcp 명령으로 MCP 서버 상태 확인
 ```
 
 ### Included MCP Servers
-- **Linear** - Project management, issue tracking
-- **Sentry** - Error monitoring, performance analysis
+- **Linear** (https://linear.app/settings/api)
+- **Sentry** (https://sentry.io/settings/account/api/)
 
-### Setup Script
-- **Location**: `mcp/setup.sh`
-- **Function**: Guides users through entering API keys and creates `.env` file
-- **Usage**: Run before starting Claude Code to configure MCP servers
+### Updating API Keys
+```bash
+# API 키를 변경하려면 다시 실행
+./mcp/setup.sh
+
+# 또는 직접 수정
+nano ~/.claude/.env
+```
+
+### Key Files
+- **Setup Script**: `mcp/setup.sh` - Interactive API key configuration
+- **Environment File**: `~/.claude/.env` - Global MCP environment variables (auto-created)
+- **Config**: `mcp/.mcp.json` - MCP server definitions
 
 ## Future Expansion
 

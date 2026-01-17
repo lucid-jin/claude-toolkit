@@ -30,47 +30,44 @@ cp mcp/.env.example .env
 
 ---
 
-## 🔑 환경 변수 설정 (권장)
-
-### 빠른 설정 (Recommended)
+## ⚡ 빠른 설정 (한 번만 실행)
 
 ```bash
-# 1. 대화형 설정 스크립트 실행
 ./mcp/setup.sh
+```
 
-# 2. 환경변수 로드
-source .env
+**이 스크립트가 하는 것:**
+1. ✅ API 키를 대화형으로 입력받음
+2. ✅ `~/.claude/.env`에 저장 (전역 환경변수)
+3. ✅ `~/.zshrc`에 자동 로드 설정 추가
+4. ✅ 이제 모든 터미널 세션에서 자동 로드됨
 
-# 3. Claude Code 시작
+**설정 완료 후:**
+```bash
+# 터미널 재시작
+source ~/.zshrc
+
+# 확인
+echo $LINEAR_API_KEY
+
+# Claude Code 시작
 claude
 ```
 
-### 수동 설정
+---
 
-또는 직접 설정하려면:
+## 🔑 API 키 변경하기
 
-```bash
-# 1. .env 파일 생성
-cp .env.example .env
-
-# 2. .env 파일 편집 (에디터 사용)
-nano .env
-# 또는
-code .env
-```
-
-`.env` 파일에 API 키 입력:
-```
-LINEAR_API_KEY=lin_pat_xxxxxxxxxxxxx
-SENTRY_API_KEY=sntrys_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+API 키를 변경해야 한다면:
 
 ```bash
-# 3. 환경변수 로드
-source .env
+# 다시 실행하면 기존 키를 덮어씀
+./mcp/setup.sh
+```
 
-# 4. Claude Code 시작
-claude
+또는 수동으로:
+```bash
+nano ~/.claude/.env
 ```
 
 ---

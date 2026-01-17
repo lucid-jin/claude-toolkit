@@ -29,13 +29,15 @@ Personal MCP collection: **Linear**, **Sentry**, and more
 
 🔧 **[MCP Setup Guide →](mcp/README.md)**
 
-**Quick Start:**
+**One-Time Setup:**
 ```bash
 cd mcp
-./setup.sh        # Interactive setup
-source .env       # Load environment variables
+./setup.sh        # Interactive API key setup (one time only)
+source ~/.zshrc   # Reload shell
 claude            # Start Claude Code
 ```
+
+✅ After setup, MCP servers auto-load in all terminal sessions!
 
 ## 🚀 Installation
 
