@@ -12,29 +12,70 @@
 - **WRITE**: 노트 작성, 구조화, 정리
 - **ORGANIZE**: 인박스 정리, 폴더 분류, 지식 관리
 
-#### 사용 방법
-1. Claude에서 `/obsidian` 스킬 로드
-2. 스킬의 마크다운 가이드 참고:
-   - `SKILL.md` - 스킬 소개 및 핵심 규칙
-   - `READ.md` - 노트 읽기/검색 가이드
-   - `WRITE.md` - 노트 작성 가이드
-   - `ORGANIZE.md` - 인박스 정리 가이드
+#### 포함된 가이드
+- `SKILL.md` - 스킬 소개 및 핵심 규칙
+- `READ.md` - 노트 읽기/검색 가이드
+- `WRITE.md` - 노트 작성 가이드
+- `ORGANIZE.md` - 인박스 정리 및 분류 가이드
 
-#### Vault 경로 설정
-기본 경로: `~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault`
+#### 사용 예시
 
-다른 경로를 사용 중이라면 각 가이드 파일의 경로를 수정하세요.
+설치 후 Claude Code에서:
 
-## 🚀 설치
+```
+/obsidian
 
-### Claude Code에서
-```bash
-git clone https://github.com/lucid-jin/claude-toolkit.git
-cd claude-toolkit
+내 옵시디언 vault에서 "Claude"에 대한 노트를 모두 찾아줘
 ```
 
-### Claude.ai에서
-이 레포의 스킬 파일들을 참고하여 설정합니다.
+또는:
+
+```
+/obsidian
+
+2026-01-17에 작성한 draft 노트들을 정리해야 하는데 어디로 분류하면 좋을까?
+```
+
+## 🚀 설치 방법
+
+### Claude Code에서 사용하기
+
+1. **레포 클론 또는 다운로드**
+   ```bash
+   git clone https://github.com/lucid-jin/claude-toolkit.git
+   ```
+
+2. **스킬 폴더를 Claude 스킬 디렉토리에 복사**
+   ```bash
+   cp -r claude-toolkit/obsidian ~/.claude/skills/obsidian
+   ```
+
+3. **Claude Code에서 스킬 사용**
+   ```
+   /obsidian
+   ```
+   위 명령으로 스킬을 호출할 수 있습니다.
+
+### 경로 설정 (중요!)
+
+스킬의 가이드 파일에 있는 vault 경로를 자신의 환경에 맞게 수정하세요:
+
+```bash
+# obsidian 스킬 가이드 파일들을 열어서 다음 경로를 확인/수정
+~/.claude/skills/obsidian/SKILL.md
+~/.claude/skills/obsidian/READ.md
+~/.claude/skills/obsidian/WRITE.md
+~/.claude/skills/obsidian/ORGANIZE.md
+
+# 기본 경로: ~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault
+# 본인 경로로 변경해야 정상 작동합니다
+```
+
+### Claude.ai에서 사용하기
+
+Claude.ai는 로컬 스킬 시스템을 지원하지 않습니다. 대신:
+- 이 레포의 스킬 가이드 파일들을 참고하여 수동으로 지시사항을 작성하여 사용할 수 있습니다.
+- 또는 MCP(Model Context Protocol) 서버로 설정할 수 있습니다.
 
 ## 📝 스킬 구조
 
