@@ -34,13 +34,36 @@
 
 ---
 
+## ⚠️ frontmatter 주의사항
+
+**YAML frontmatter 안에서 `[[]]` 위키링크를 직접 쓰면 안 됨.**
+옵시디언이 `Invalid properties` 에러를 표시함.
+
+```yaml
+# ❌ 잘못된 예시
+related: [[노트A]], [[노트B]]
+
+# ✅ 올바른 예시 (리스트 + 따옴표)
+related:
+  - "[[노트A]]"
+  - "[[노트B]]"
+
+# ✅ 비어있을 때
+related: []
+```
+
+이 규칙은 `related` 뿐 아니라 frontmatter 안의 모든 위키링크에 적용됨.
+
+---
+
 ## 노트 템플릿
 
 ### 학습 노트
 ```markdown
 ---
 created: YYYY-MM-DD
-related: [[관련노트]]
+related:
+  - "[[관련노트]]"
 status: draft
 ---
 
