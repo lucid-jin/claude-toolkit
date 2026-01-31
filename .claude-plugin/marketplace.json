@@ -8,6 +8,16 @@
       "name": "obsidian",
       "source": "./obsidian",
       "description": "Obsidian vault 노트 관리 자동화 - 검색, 작성, 정리"
+    },
+    {
+      "name": "skill-publish",
+      "source": "./skill-publish",
+      "description": "로컬 스킬을 GitHub claude-toolkit 레포에 선택적으로 업로드"
+    },
+    {
+      "name": "skill-pull",
+      "source": "./skill-pull",
+      "description": "GitHub claude-toolkit 레포에서 스킬을 선택적으로 로컬에 다운로드"
     }
   ]
 }
