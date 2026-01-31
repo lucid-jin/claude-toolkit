@@ -2,7 +2,7 @@
 
 Claude Code 스킬 & MCP 서버 모음.
 
-**[English](README.md) | [한국어](README.ko.md)**
+**[English](README.en.md) | [한국어](README.md)**
 
 ---
 
