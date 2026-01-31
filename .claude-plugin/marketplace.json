@@ -18,6 +18,11 @@
       "name": "skill-pull",
       "source": "./skill-pull",
       "description": "GitHub claude-toolkit 레포에서 스킬을 선택적으로 로컬에 다운로드"
+    },
+    {
+      "name": "skill-creator",
+      "source": "./skill-creator",
+      "description": "Anthropic 공식 스킬 생성 가이드 - 스킬 설계, 초기화, 패키징"
     }
   ]
 }
