@@ -1,6 +1,6 @@
 ---
 name: skill-publish
-description: 로컬 스킬을 GitHub claude-toolkit 레포에 선택적으로 업로드합니다. 새로 만든 스킬을 GitHub에 올리고 싶을 때, 어떤 스킬이 변경됐는지 확인하고 싶을 때, 특정 스킬만 골라서 푸시하고 싶을 때 사용합니다.
+description: 로컬 스킬을 GitHub 레포에 선택적으로 업로드합니다. 새로 만든 스킬을 GitHub에 올리고 싶을 때, 어떤 스킬이 변경됐는지 확인하고 싶을 때, 특정 스킬만 골라서 푸시하고 싶을 때 사용합니다.
 ---
 
 # 스킬 퍼블리시
@@ -8,8 +8,8 @@ description: 로컬 스킬을 GitHub claude-toolkit 레포에 선택적으로 �
 ## 경로
 
 - 로컬 스킬: `~/.claude/skills/`
-- GitHub 레포: `https://github.com/lucid-jin/claude-toolkit`
-- 레포 로컬 (옵셔널): `~/WebstormProjects/claude-toolkit`
+- 기본 GitHub 레포: `https://github.com/lucid-jin/claude-toolkit`
+- 사용자가 다른 레포를 지정하면 그 레포를 사용
 
 ## 퍼블리시 프로세스
 
@@ -21,17 +21,16 @@ ls ~/.claude/skills/
 
 ### 2. 레포 준비
 
-```bash
-LOCAL_REPO="$HOME/WebstormProjects/claude-toolkit"
+기본 레포: `https://github.com/lucid-jin/claude-toolkit`
+사용자가 별도 레포를 지정한 경우에만 해당 레포 사용.
 
-if [ -d "$LOCAL_REPO/.git" ]; then
-  REPO_DIR="$LOCAL_REPO"
-  cd "$REPO_DIR" && git pull
-else
-  REPO_DIR=$(mktemp -d)
-  git clone https://github.com/lucid-jin/claude-toolkit.git "$REPO_DIR"
-fi
+```bash
+REPO_URL="https://github.com/lucid-jin/claude-toolkit"  # 기본값, 사용자가 다른 레포 지정 시 변경
+REPO_DIR=$(mktemp -d)
+git clone "$REPO_URL" "$REPO_DIR"
 ```
+
+로컬에 이미 클론된 레포가 있으면 `git pull`로 최신화하여 재사용.
 
 ### 3. 비교 및 사용자에게 보여주기
 
@@ -45,10 +44,8 @@ fi
 
 비교 방법:
 ```bash
-# 로컬 스킬 목록
 LOCAL_SKILLS=$(ls ~/.claude/skills/)
 
-# 각 스킬별 상태 확인
 for skill in $LOCAL_SKILLS; do
   if [ ! -d "$REPO_DIR/skills/$skill" ]; then
     echo "$skill: NEW"
@@ -70,13 +67,12 @@ UP-TO-DATE인 스킬은 선택지에서 제외.
 ### 5. 선택한 스킬만 복사
 
 ```bash
-# 선택된 스킬만 복사
 rsync -av ~/.claude/skills/선택한스킬/ "$REPO_DIR/skills/선택한스킬/"
 ```
 
 ### 6. marketplace.json 업데이트
 
-새 스킬이면 `.claude-plugin/marketplace.json`의 plugins 배열에 추가:
+레포에 `.claude-plugin/marketplace.json`이 있고 새 스킬이면 plugins 배열에 추가:
 
 ```json
 {

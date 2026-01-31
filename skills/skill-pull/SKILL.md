@@ -1,6 +1,6 @@
 ---
 name: skill-pull
-description: GitHub claude-toolkit 레포에서 스킬을 선택적으로 로컬에 다운로드합니다. 다른 PC에서 스킬을 가져오고 싶을 때, 특정 스킬만 골라서 설치하고 싶을 때, 로컬 스킬을 최신 상태로 업데이트하고 싶을 때 사용합니다.
+description: GitHub 레포에서 스킬을 선택적으로 로컬에 다운로드합니다. 다른 PC에서 스킬을 가져오고 싶을 때, 특정 스킬만 골라서 설치하고 싶을 때, 로컬 스킬을 최신 상태로 업데이트하고 싶을 때 사용합니다.
 ---
 
 # 스킬 풀
@@ -8,25 +8,24 @@ description: GitHub claude-toolkit 레포에서 스킬을 선택적으로 로컬
 ## 경로
 
 - 로컬 스킬: `~/.claude/skills/`
-- GitHub 레포: `https://github.com/lucid-jin/claude-toolkit`
-- 레포 로컬 (옵셔널): `~/WebstormProjects/claude-toolkit`
+- 기본 GitHub 레포: `https://github.com/lucid-jin/claude-toolkit`
+- 사용자가 다른 레포를 지정하면 그 레포를 사용
 
 ## 풀 프로세스
 
 ### 1. 레포 준비
 
-```bash
-LOCAL_REPO="$HOME/WebstormProjects/claude-toolkit"
+기본 레포: `https://github.com/lucid-jin/claude-toolkit`
+사용자가 "다른레포에서 가져와" 등으로 별도 레포를 지정한 경우에만 해당 레포 사용.
 
-if [ -d "$LOCAL_REPO/.git" ]; then
-  REPO_DIR="$LOCAL_REPO"
-  cd "$REPO_DIR" && git pull
-else
-  REPO_DIR=$(mktemp -d)
-  git clone https://github.com/lucid-jin/claude-toolkit.git "$REPO_DIR"
-  TEMP_CLONE=true
-fi
+```bash
+REPO_URL="https://github.com/lucid-jin/claude-toolkit"  # 기본값, 사용자가 다른 레포 지정 시 변경
+REPO_DIR=$(mktemp -d)
+git clone "$REPO_URL" "$REPO_DIR"
+TEMP_CLONE=true
 ```
+
+로컬에 이미 클론된 레포가 있으면 `git pull`로 최신화하여 재사용.
 
 ### 2. 레포 스킬 목록 확인 및 비교
 
