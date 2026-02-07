@@ -64,6 +64,38 @@ agent-browser 사용법, 실행 패턴, 검증 방법.
 
 ---
 
+## 요소 탐색 전략 (토큰 절약)
+
+snapshot은 토큰 소모가 크다. 단계적으로 접근:
+
+```
+1단계: find        (~0.5K tokens) → 대부분 여기서 해결
+2단계: snapshot -ic -d 3  (~1-2K) → 구조 파악 필요시
+3단계: snapshot -ic       (~5K)   → 2단계로 안될 때
+4단계: 사용자에게 질문           → 그래도 안되면
+```
+
+**첫 진입 시**: `snapshot -ic -d 3`으로 구조 파악
+**이후**: `find`나 직접 셀렉터(`text=`, `role=`)로 조작
+
+```bash
+# 좋음 - find 먼저 시도
+agent-browser find "text" "벌크 업로드" click
+agent-browser find "role" "button" click --name "저장"
+
+# 좋음 - 직접 셀렉터
+agent-browser click "text=업로드"
+agent-browser is visible "role=dialog"
+
+# 좋음 - 범위 좁힌 snapshot
+agent-browser snapshot -ic -s "role=dialog" -d 3
+
+# 피할 것 - 전체 snapshot 반복
+agent-browser snapshot -i
+```
+
+---
+
 ## 실행 흐름
 
 ```
@@ -75,14 +107,15 @@ agent-browser 사용법, 실행 패턴, 검증 방법.
 ```bash
 open <url> --profile <name>
 get url  # 로그인 페이지 체크
+snapshot -ic -d 3  # 첫 진입: 구조 파악
 screenshot /tmp/qa-<id>-init.png
 ```
 
 ### 실행
 
 ```bash
-snapshot -i
-click @refN
+find "role" "button" click --name "대상"  # find 우선
+click @refN  # ref 알면 직접
 fill @refM "값"
 ```
 
@@ -136,9 +169,10 @@ console --clear
 
 ### 요소 못 찾음
 
-1. `snapshot -i`로 상태 확인
-2. 다른 셀렉터 시도
-3. 3회 실패 → FAIL + 스크린샷
+1. `find`로 다른 텍스트/role 시도
+2. `snapshot -ic -d 3`으로 범위 좁혀서 확인
+3. 안되면 `snapshot -ic`로 확인
+4. 그래도 안되면 → 사용자에게 질문
 
 ### 타임아웃
 
@@ -154,21 +188,21 @@ console --clear
 
 ```bash
 open <url> --profile <name>
-snapshot -i
+snapshot -ic -d 3  # 첫 진입만
 fill @input1 "값1"
 fill @input2 "값2"
 click @submitBtn
 wait 2000
-snapshot -i
+get text ".toast"  # snapshot 대신 직접 확인
 screenshot /tmp/qa-result.png
 ```
 
 ### 모달
 
 ```bash
-click @openBtn
+find "role" "button" click --name "열기"
 wait role=dialog
-snapshot -i
+snapshot -ic -s "role=dialog" -d 3  # 모달 범위만
 click @action
 wait 1000
 is visible role=dialog  # false면 성공
@@ -177,9 +211,9 @@ is visible role=dialog  # false면 성공
 ### 파일 업로드
 
 ```bash
+find "text" "업로드" click  # find 우선
 upload @fileInput /tmp/test.csv
 wait 2000
-snapshot -i
 screenshot /tmp/qa-preview.png
 ```
 
