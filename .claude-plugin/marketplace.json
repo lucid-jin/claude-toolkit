@@ -28,6 +28,11 @@
       "name": "qa",
       "source": "./qa",
       "description": "QA 검수 에이전트 - 브라우저 프로필 기반 웹 페이지 자동 검수"
+    },
+    {
+      "name": "review-pr",
+      "source": "./review-pr",
+      "description": "PR 적대적 코드리뷰 - 버그헌터, 품질검사관, 변호사, 심판 4명이 병렬 리뷰"
     }
   ]
 }
