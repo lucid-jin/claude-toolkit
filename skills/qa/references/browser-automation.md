@@ -221,8 +221,16 @@ screenshot /tmp/qa-preview.png
 
 ## 스크린샷 타이밍
 
+검수 시작 시 타임스탬프 폴더를 생성하고, 모든 스크린샷을 해당 폴더에 저장:
+
+```bash
+QA_DIR="/tmp/qa/<이슈ID>-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$QA_DIR"
+```
+
 | 시점 | 파일명 |
 |-----|--------|
-| 시작 | `qa-<id>-init.png` |
-| 실패 | `qa-<id>-fail.png` |
-| 완료 | `qa-<id>-result.png` |
+| 시작 | `$QA_DIR/init.png` |
+| 시나리오별 | `$QA_DIR/<시나리오명>.png` |
+| 실패 | `$QA_DIR/fail-<시나리오번호>.png` |
+| 완료 | `$QA_DIR/result.png` |
