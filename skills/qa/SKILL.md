@@ -1,7 +1,7 @@
 ---
 name: qa
 description: QA 검수 에이전트. Linear PRD 기반 또는 URL 직접 검수. /qa ZEP-181 로 PRD에서 시나리오 도출 후 agent-browser 검수, /qa <URL> 로 직접 검수. /qa-login <profile> <url> 로 세션 프로필 등록. 모든 검수는 백그라운드 서브 에이전트로 실행.
-allowed-tools: Bash(agent-browser:*), Task, mcp__linear__get_issue, mcp__linear__list_comments, mcp__linear__create_comment
+allowed-tools: Bash, Task, mcp__linear__get_issue, mcp__linear__list_comments, mcp__linear__create_comment
 user-invocable-skills:
   - qa: Run QA check based on Linear PRD or URL
   - qa-login: Open headed browser to register/refresh a login session profile
@@ -63,7 +63,7 @@ agent-browser close
    - **테스트 환경** (URL, 환경 종류)
    - **데이터 의존성** (필요 데이터, 준비 방법)
 5. agent-browser로 검수 실행 (확정된 환경 URL + 프로필)
-6. 결과 리포트 → Linear 코멘트에 시나리오 기록
+6. **QA 폴더에 `REPORT.md` 생성** (필수) — [scenario-format.md](references/scenario-format.md) 형식
 
 ## 사용자 확인 (시나리오 + 환경 + 데이터)
 
@@ -137,10 +137,20 @@ mkdir -p "$QA_DIR"
 agent-browser screenshot "$QA_DIR/<이슈ID>-init.png"
 ```
 
-### 리포트 기록
+### 리포트 생성 (필수)
 
-검수 완료 후 `mcp__linear__create_comment`로 Playwright 스타일 리포트를 이슈에 기록.
-형식은 [scenario-format.md](references/scenario-format.md) 참조.
+검수 완료 후 **반드시** QA 폴더에 `REPORT.md`를 생성한다. 이 단계를 빠뜨리면 안 됨.
+
+```bash
+# $QA_DIR/REPORT.md 에 Write 도구로 생성
+```
+
+형식은 [scenario-format.md](references/scenario-format.md) 참조. 리포트에 포함할 내용:
+- 이슈/환경/일시 정보
+- 요약 테이블 (Pass/Warning/Fail/Skip 수)
+- Suite별 시나리오 결과 테이블
+- Warning/Fail 상세 (기대/실제/판단/스크린샷)
+- 스크린샷 파일 목록
 
 ## 레퍼런스
 
