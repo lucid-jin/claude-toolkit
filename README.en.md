@@ -14,6 +14,7 @@ A collection of Claude Code skills & MCP servers.
 | **skill-creator** | Anthropic official skill creation guide |
 | **skill-publish** | Selectively upload local skills to GitHub |
 | **skill-pull** | Selectively download skills from GitHub |
+| **cmux-markdown-preview** | Real-time markdown preview for cmux with interactive Edit buttons |
 
 ---
 

@@ -14,6 +14,7 @@ Claude Code 스킬 & MCP 서버 모음.
 | **skill-creator** | Anthropic 공식 스킬 생성 가이드 |
 | **skill-publish** | 로컬 스킬 → GitHub 선택적 업로드 |
 | **skill-pull** | GitHub → 로컬 스킬 선택적 다운로드 |
+| **cmux-markdown-preview** | cmux 실시간 마크다운 프리뷰 + 인터랙티브 Edit 버튼 |
 
 ---
 
@@ -85,7 +86,8 @@ claude-toolkit/
 │   ├── obsidian/          # 옵시디언 노트 관리
 │   ├── skill-creator/     # 스킬 생성 가이드
 │   ├── skill-publish/     # 로컬 → GitHub 업로드
-│   └── skill-pull/        # GitHub → 로컬 다운로드
+│   ├── skill-pull/        # GitHub → 로컬 다운로드
+│   └── cmux-markdown-preview/ # cmux 마크다운 실시간 프리뷰
 ├── mcp/
 │   ├── .mcp.json          # MCP 서버 설정
 │   └── setup.sh           # 설정 스크립트
