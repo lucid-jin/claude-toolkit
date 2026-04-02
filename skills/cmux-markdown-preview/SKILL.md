@@ -1,5 +1,6 @@
 ---
 name: cmux-markdown-preview
+version: 3.0.0
 description: >
   cmux 환경에서 마크다운 파일의 실시간 미리보기를 제공합니다.
   python-markdown으로 GitHub 스타일 HTML 변환 후 로컬 서버로 서빙하고,

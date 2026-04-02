@@ -134,7 +134,14 @@ function copyText(text) {{
   }});
 }}
 
-// Wrap headers with action buttons
+function applyInteractiveUI() {{
+document.querySelectorAll('#md-content .section-header').forEach(w => {{
+  const h = w.querySelector('h1,h2,h3');
+  if (h) {{ w.replaceWith(h); }}
+}});
+document.querySelectorAll('#md-content .comment-box').forEach(b => b.remove());
+
+let _i = 0;
 document.querySelectorAll('#md-content h1, #md-content h2, #md-content h3').forEach((h, i) => {{
   const wrapper = document.createElement('div');
   wrapper.className = 'section-header';
@@ -154,45 +161,43 @@ document.querySelectorAll('#md-content h1, #md-content h2, #md-content h3').forE
   box.innerHTML = `<input type="text" placeholder="피드백 입력 후 Enter (빈칸이면 개선 요청)" /><button>Copy</button><button class="btn-cancel">X</button><span class="hint">→ clipboard</span>`;
   wrapper.after(box);
 }});
+}}
+applyInteractiveUI();
 
+// Event delegation - survives DOM replacement
 document.addEventListener('click', (e) => {{
-  const btn = e.target.closest('[data-action]');
-  if (!btn) return;
-  if (btn.dataset.action === 'edit') {{
-    const box = document.getElementById('cb-' + btn.dataset.idx);
-    box.classList.toggle('open');
-    if (box.classList.contains('open')) box.querySelector('input').focus();
+  const editBtn = e.target.closest('[data-action="edit"]');
+  if (editBtn) {{
+    const box = document.getElementById('cb-' + editBtn.dataset.idx);
+    if (box) {{ box.classList.toggle('open'); if (box.classList.contains('open')) box.querySelector('input').focus(); }}
+    return;
   }}
-}});
-
-document.querySelectorAll('.comment-box button').forEach(btn => {{
-  btn.addEventListener('click', () => {{
-    const input = btn.parentElement.querySelector('input');
-    const feedback = input.value.trim();
-    const section = btn.parentElement.previousElementSibling.querySelector('h1,h2,h3').textContent;
-    const line = HEADER_LINES[section] || '';
-    const loc = line ? `${{FILE}}:${{line}}` : FILE;
-    if (feedback) {{
-      copyText(`${{loc}} ��� "${{section}}" 섹션: ${{feedback}}`);
-    }} else {{
-      copyText(`${{loc}} 의 "${{section}}" 섹션을 개선해줘`);
-    }}
-    input.value = '';
-    btn.parentElement.classList.remove('open');
-  }});
-}});
-document.querySelectorAll('.comment-box input').forEach(inp => {{
-  inp.addEventListener('keydown', (e) => {{
-    if (e.key === 'Enter') inp.parentElement.querySelector('button').click();
-    if (e.key === 'Escape') {{ inp.value = ''; inp.parentElement.classList.remove('open'); }}
-  }});
-}});
-document.querySelectorAll('.btn-cancel').forEach(btn => {{
-  btn.addEventListener('click', () => {{
-    const box = btn.parentElement;
+  const cancelBtn = e.target.closest('.btn-cancel');
+  if (cancelBtn) {{
+    const box = cancelBtn.parentElement;
     box.querySelector('input').value = '';
     box.classList.remove('open');
-  }});
+    return;
+  }}
+  const copyBtn = e.target.closest('.comment-box button:not(.btn-cancel)');
+  if (copyBtn) {{
+    const box = copyBtn.parentElement;
+    const input = box.querySelector('input');
+    const feedback = input.value.trim();
+    const section = box.previousElementSibling.querySelector('h1,h2,h3').textContent;
+    const line = HEADER_LINES[section] || '';
+    const loc = line ? `${{FILE}}:${{line}}` : FILE;
+    copyText(feedback ? `${{loc}} 의 "${{section}}" 섹션: ${{feedback}}` : `${{loc}} 의 "${{section}}" 섹션을 개선해줘`);
+    input.value = '';
+    box.classList.remove('open');
+    return;
+  }}
+}});
+document.addEventListener('keydown', (e) => {{
+  if (e.target.matches('.comment-box input')) {{
+    if (e.key === 'Enter') e.target.parentElement.querySelector('button:not(.btn-cancel)').click();
+    if (e.key === 'Escape') {{ e.target.value = ''; e.target.parentElement.classList.remove('open'); }}
+  }}
 }});
 
 const fb = document.getElementById('float-btn');
@@ -217,31 +222,56 @@ fb.addEventListener('click', () => {{
   fb.style.display = 'none';
 }});
 
-// === Smart auto-refresh: pause when user is interacting ===
-let userActive = false;
-let refreshPaused = false;
+// === Smart fetch-based refresh: no flicker, preserves scroll & UI state ===
+let lastContent = document.getElementById('md-content').innerHTML;
 
-// Track focus on any input
-document.addEventListener('focusin', (e) => {{
-  if (e.target.matches('.comment-box input')) {{ userActive = true; refreshPaused = true; }}
-}});
-document.addEventListener('focusout', (e) => {{
-  if (e.target.matches('.comment-box input')) {{ userActive = false; setTimeout(() => {{ if (!userActive) refreshPaused = false; }}, 500); }}
-}});
+async function checkForUpdates() {{
+  try {{
+    const res = await fetch('index.html?t=' + Date.now());
+    const html = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const newContent = doc.getElementById('md-content');
+    if (!newContent) return;
 
-// Track open comment boxes or visible float button
-function isInteracting() {{
-  if (userActive) return true;
-  if (fb.style.display === 'block') return true;
-  if (document.querySelector('.comment-box.open')) return true;
-  return false;
+    const newHTML = newContent.innerHTML;
+    if (newHTML !== lastContent) {{
+      // Save open comment boxes state
+      const openBoxes = new Set();
+      document.querySelectorAll('.comment-box.open').forEach(b => openBoxes.add(b.id));
+      const inputValues = {{}};
+      document.querySelectorAll('.comment-box input').forEach(inp => {{
+        if (inp.value) inputValues[inp.parentElement.id] = inp.value;
+      }});
+
+      // Update content
+      document.getElementById('md-content').innerHTML = newHTML;
+      lastContent = newHTML;
+
+      // Re-apply interactive buttons
+      applyInteractiveUI();
+
+      // Restore comment box state
+      openBoxes.forEach(id => {{
+        const box = document.getElementById(id);
+        if (box) box.classList.add('open');
+      }});
+      Object.entries(inputValues).forEach(([id, val]) => {{
+        const box = document.getElementById(id);
+        if (box) box.querySelector('input').value = val;
+      }});
+
+      // Update HEADER_LINES from new HTML script
+      const scriptTag = doc.querySelector('script');
+      if (scriptTag) {{
+        const match = scriptTag.textContent.match(/const HEADER_LINES = (.+);/);
+        if (match) try {{ Object.assign(HEADER_LINES, JSON.parse(match[1])); }} catch(e) {{}}
+      }}
+    }}
+  }} catch(e) {{}}
 }}
 
-setInterval(() => {{
-  if (!isInteracting()) {{
-    location.reload();
-  }}
-}}, 2000);
+setInterval(checkForUpdates, 2000);
 </script>
 </body>
 </html>'''
