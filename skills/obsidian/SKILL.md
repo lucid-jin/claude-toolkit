@@ -1,12 +1,12 @@
 ---
 name: obsidian
-description: 옵시디언 노트를 읽고, 검색하고, 작성하고, 정리합니다. 노트 찾기, 태그 검색, 링크 탐색, 학습 내용 정리, 인박스 정리, 지식 관리할 때 사용합니다.
+description: 옵시디언 노트를 읽고, 검색하고, 작성하고, 정리합니다. 노트 찾기, 태그 검색, 링크 탐색, 학습 내용 정리, 인박스 정리, 지식 관리, 오늘 대화/생각/학습을 인박스에 원샷으로 덤프하고 GitHub 동기화까지 자동 수행합니다. Triggers "인박스에 넣어줘", "인박스 덤프", "인박스에 저장", "생각 정리해서 저장", "오늘 대화 덤프", "세션 덤프", "데일리 정리", "옵시디언에 정리", "옵시디언에 저장", "vault에 저장", "노트로 남겨줘", "이거 기록해줘", "오늘 배운 거 정리", "학습 노트 저장", "생각 덤프", "Obsidian에 넣어줘", "이거 옵시디언에", "PARA 인박스", "주간 정리", "인박스 정리", "노트 검색", "태그 검색", "백링크 찾기".
 ---
 
 # 옵시디언 노트 스킬
 
 ## 볼트 경로
-`/Users/jinhoin/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault`
+`/Users/jinhoin/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault`
 
 ## 가이드
 
@@ -14,6 +14,7 @@ description: 옵시디언 노트를 읽고, 검색하고, 작성하고, 정리�
 |---|---|
 | 검색, 태그 찾기, 링크 탐색 | [READ.md](READ.md) |
 | 노트 작성, 템플릿, GitHub 푸시 | [WRITE.md](WRITE.md) |
+| **대화/생각을 인박스 덤프 (원샷)** | [WRITE.md](WRITE.md#세션생각-덤프-워크플로우) |
 | 인박스 정리, 폴더 분류 | [ORGANIZE.md](ORGANIZE.md) |
 
 ## 폴더 구조 (PARA)

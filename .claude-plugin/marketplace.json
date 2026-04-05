@@ -7,7 +7,7 @@
     {
       "name": "obsidian",
       "source": "./obsidian",
-      "description": "Obsidian vault 노트 관리 자동화 - 검색, 작성, 정리"
+      "description": "Obsidian vault 노트 관리 + 대화/생각 인박스 원샷 덤프 - 검색, 작성, 정리, 세션 덤프, GitHub 자동 동기화 (PARA 구조)"
     },
     {
       "name": "skill-publish",

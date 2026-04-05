@@ -1,6 +1,6 @@
 # 인박스 정리 가이드
 
-볼트 경로: `/Users/jinhoin/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Vault`
+볼트 경로: `/Users/jinhoin/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault`
 
 ## 정리 프로세스
 
